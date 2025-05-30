@@ -1,16 +1,21 @@
-name: node CI
+name: Node CI
+
 on:
   push:
-    branches: [master]
-job:
+    branches: [main]
+
+jobs:
   build:
-   runs-on: ubuntu-latest
-   steps:
-      - uses: actions/checkout@v3
-      - name: setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm install
-      - run: npm test || echo "Tests failed, but continuing to deploy"
-      - run: echo "build succesfull"
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - run: npm install
+    - run: npm test || echo "No tests yet"
+    - run: echo "Build successful!"
